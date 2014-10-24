@@ -17,6 +17,7 @@ namespace MyHealth
 
     using MyIdentity.Messages;
 
+    using NServiceBus.Persistence;
     using NServiceBus.Persistence.Legacy;
 
     /// <summary>
@@ -32,7 +33,7 @@ namespace MyHealth
             var busConfiguration = new BusConfiguration();
             busConfiguration.EndpointName("MyHealth");
             busConfiguration.UseSerialization<JsonSerializer>();
-            busConfiguration.UsePersistence<InMemoryPersistence>();
+            busConfiguration.UsePersistence<RavenDBPersistence>();
             busConfiguration.EnableInstallers();
             var startableBus = Bus.Create(busConfiguration);
             using (var bus = startableBus.Start())

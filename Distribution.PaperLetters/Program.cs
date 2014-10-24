@@ -12,6 +12,7 @@
 using System;
 
 using NServiceBus;
+using NServiceBus.Persistence;
 using NServiceBus.Features;
 
 namespace Distribution.PaperLetters
@@ -34,7 +35,6 @@ namespace Distribution.PaperLetters
             var startableBus = Bus.Create(busConfiguration);
             using (var bus = startableBus.Start())
             {
-                
                 Console.WriteLine("To exit, Ctrl + C");
                 Console.ReadLine();
             }
